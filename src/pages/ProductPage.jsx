@@ -219,6 +219,9 @@ const ProductPage = () => {
    
   return (
     <div className="container">
+        <h1>product page</h1>
+        <Link to="/"><button>HOME</button></Link>
+        <Link to="/cart"><button>VIEW YOUR CART</button></Link>
             {plantsArray.map((categoryItem, index) => (
                 <div key={index} className="category-section">
                     <h2 className="category-title">{categoryItem.category}</h2>
