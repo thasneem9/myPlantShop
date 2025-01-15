@@ -1,0 +1,53 @@
+/* General Styling */
+.container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Category Section */
+.category-section {
+    margin-bottom: 40px;
+}
+
+.category-title {
+    color: green;
+    text-decoration: underline;
+}
+
+/* Plants Grid */
+.plants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* Plant Card */
+.plant-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.plant-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.plant-name {
+    margin: 10px 0;
+    color: #333;
+}
+
+.plant-description {
+    font-size: 14px;
+    color: #666;
+}
+
+.plant-cost {
+    font-weight: bold;
+    color: #000;
+}
