@@ -218,13 +218,7 @@ const ProductPage = () => {
     ];
    
   return (
-    <div>
-        <Link to="/"><button>home</button></Link>
-        <h1>Product page</h1>
-        <Link to="/cart"><button>cart</button></Link>
-
-       
-        <div className="container">  {/* Mapping Array items to displayy plants categorically: L-1 */}
+    <div className="container">
             {plantsArray.map((categoryItem, index) => (
                 <div key={index} className="category-section">
                     <h2 className="category-title">{categoryItem.category}</h2>
@@ -235,16 +229,19 @@ const ProductPage = () => {
                                 <h3 className="plant-name">{plant.name}</h3>
                                 <p className="plant-description">{plant.description}</p>
                                 <p className="plant-cost">{plant.cost}</p>
-                                <button onClick={() => dispatch(addToCart({ id: 1, name: "ZZ Plant", price: 25, quantity: 1 }))}>Add to Cart</button>
+                                <button
+                                    className="add-to-cart-button"
+                                    onClick={() => dispatch(addToCart(plant))}
+                                >
+                                    Add to Cart
+                                </button>
                             </div>
                         ))}
                     </div>
                 </div>
             ))}
+            <CartPage/>
         </div>
-      <CartPage/>
-
-    </div>
   )
 }
 
