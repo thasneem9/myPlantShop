@@ -1,13 +1,14 @@
-import React from 'react'
+import React , { useState }from 'react'
 import './productPage.css'
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../CartSlice';
+import { useDispatch,useSelector } from 'react-redux';
+import { addToCart,selectCartItems } from '../CartSlice';
 import CartPage from './CartPage';
 import CartIcon from '../CartIcon';
 
 const ProductPage = () => {
     const dispatch = useDispatch();
+    const cartItems = useSelector(selectCartItems); // Get cart items from Red
 
     const plantsArray = [
         {
@@ -220,27 +221,34 @@ const ProductPage = () => {
     return (
         <div className="container">
             <h1>Plant Products</h1>
-            <Link to="/"><CartIcon/></Link>
+            <Link to="/"><CartIcon /></Link>
             <Link to="/cart"><button>Cart</button></Link>
             {plantsArray.map((categoryItem, index) => (
                 <div key={index} className="category-section">
                     <h2 className="category-title">{categoryItem.category}</h2>
                     <div className="plants-grid">
-                        {categoryItem.plants.map((plant, idx) => (
-                            <div key={idx} className="plant-card">
-                                <img src={plant.image} alt={plant.name} />
-                                <h3 className="plant-name">{plant.name}</h3>
-                                <p className="plant-description">{plant.description}</p>
-                                <p className="plant-cost">{plant.cost}</p>
-                                <button onClick={() => dispatch(addToCart(plant))}>
-                                    Add to Cart
-                                </button>
-                            </div>
-                        ))}
+                        {categoryItem.plants.map((plant, idx) => {
+                            // Check if the plant is already in the cart
+                            const isInCart = cartItems.some(item => item.name === plant.name);
+                            return (
+                                <div key={idx} className="plant-card">
+                                    <img src={plant.image} alt={plant.name} />
+                                    <h3 className="plant-name">{plant.name}</h3>
+                                    <p className="plant-description">{plant.description}</p>
+                                    <p className="plant-cost">{plant.cost}</p>
+                                    <button 
+                                        onClick={() => dispatch(addToCart(plant))}
+                                        disabled={isInCart} // Disable button if the plant is in the cart
+                                    >
+                                        {isInCart ? "Added to Cart" : "Add to Cart"}
+                                    </button>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             ))}
-            <CartPage/>
+            <CartPage />
         </div>
     );
 };
