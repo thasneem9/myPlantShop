@@ -44,33 +44,42 @@ const CartPage = () => {
 export default CartPage; */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, removeFromCart} from '../CartSlice';
+import { incrementQuantity, decrementQuantity, removeItem } from '../CartSlice';
+import { Link } from 'react-router-dom';
 
 const CartPage = () => {
-    const cart = useSelector(state => state.cart.cart);
-    const totalPrice = useSelector(state => state.cart.totalPrice);
     const dispatch = useDispatch();
+    const cartItems = useSelector(state => state.cart.cartItems);
+
+    const totalCheckoutPrice = cartItems.reduce((total, item) => 
+        total + item.quantity * parseFloat(item.cost.slice(1)), 0
+    );
 
     return (
-        <div className="cart-page">
-            <h1>Cart</h1>
-            <h2>Total Checkout Price: ${totalPrice.toFixed(2)}</h2>
-            <div className="cart-items">
-                {cart.map(item => (
-                    <div key={item.id} className="cart-item">
-                        <img src={item.image} alt={item.name} />
-                        <h3>{item.name}</h3>
-                        <p>Price per Unit: ${item.cost}</p>
-                        <p>Quantity: {item.quantity}</p>
-                        <p>Total Price: ${item.totalPrice.toFixed(2)}</p>
-                        <div className="cart-actions">
-                            <button onClick={() => dispatch(increment(item.id))}>+</button>
-                            <button onClick={() => dispatch(decrement(item.id))}>-</button>
-                            <button onClick={() => dispatch(removeFromCart(item.id))}>Remove</button>
+        <div className="cart-container">
+            <h2>Cart</h2>
+            <Link to="/plants"><button>Continue Shopping</button></Link>
+            <button onClick={""}>CheckOut</button>
+            {cartItems.length === 0 ? (
+                <p>Your cart is empty.</p>
+            ) : (
+                <div>
+                    {cartItems.map(item => (
+                        <div key={item.name} className="cart-item">
+                            <h3>{item.name}</h3>
+                            <p>Price: {item.cost}</p>
+                            <p>Quantity: {item.quantity}</p>
+                            <img src={item.image} width="250px"></img>
+                            <p>{item.description}</p>
+                            <p>Subtotal: ${(item.quantity * parseFloat(item.cost.slice(1))).toFixed(2)}</p>
+                            <button onClick={() => dispatch(incrementQuantity(item))}>+</button>
+                            <button onClick={() => dispatch(decrementQuantity(item))}>-</button>
+                            <button onClick={() => dispatch(removeItem(item))}>Remove</button>
                         </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                    <h3>Total: ${totalCheckoutPrice.toFixed(2)}</h3>
+                </div>
+            )}
         </div>
     );
 };

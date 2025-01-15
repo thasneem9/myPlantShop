@@ -217,11 +217,11 @@ const ProductPage = () => {
         }
     ];
    
-  return (
-    <div className="container">
-        <h1>product page</h1>
-        <Link to="/"><button>HOME</button></Link>
-        <Link to="/cart"><button>VIEW YOUR CART</button></Link>
+    return (
+        <div className="container">
+            <h1>Plant Products</h1>
+            <Link to="/"><button>Home</button></Link>
+            <Link to="/cart"><button>Cart</button></Link>
             {plantsArray.map((categoryItem, index) => (
                 <div key={index} className="category-section">
                     <h2 className="category-title">{categoryItem.category}</h2>
@@ -232,10 +232,7 @@ const ProductPage = () => {
                                 <h3 className="plant-name">{plant.name}</h3>
                                 <p className="plant-description">{plant.description}</p>
                                 <p className="plant-cost">{plant.cost}</p>
-                                <button
-                                    className="add-to-cart-button"
-                                    onClick={() => dispatch(addToCart(plant))}
-                                >
+                                <button onClick={() => dispatch(addToCart(plant))}>
                                     Add to Cart
                                 </button>
                             </div>
@@ -245,7 +242,7 @@ const ProductPage = () => {
             ))}
             <CartPage/>
         </div>
-  )
-}
+    );
+};
 
 export default ProductPage
