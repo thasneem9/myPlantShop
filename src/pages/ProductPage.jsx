@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../CartSlice';
 import CartPage from './CartPage';
-
+import CartIcon from '../CartIcon';
 
 const ProductPage = () => {
     const dispatch = useDispatch();
@@ -220,7 +220,7 @@ const ProductPage = () => {
     return (
         <div className="container">
             <h1>Plant Products</h1>
-            <Link to="/"><button>Home</button></Link>
+            <Link to="/"><CartIcon/></Link>
             <Link to="/cart"><button>Cart</button></Link>
             {plantsArray.map((categoryItem, index) => (
                 <div key={index} className="category-section">
