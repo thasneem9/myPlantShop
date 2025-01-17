@@ -1,10 +1,10 @@
-/* General Styling */
 .container {
     padding: 20px;
     font-family: Arial, sans-serif;
+    background-color: #f5f8e4;
 }
 
-/* Category Section */
+
 .category-section {
     margin-bottom: 40px;
 }
@@ -14,14 +14,14 @@
     text-decoration: underline;
 }
 
-/* Plants Grid */
+
 .plants-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
 }
 
-/* Plant Card */
+
 .plant-card {
     border: 1px solid #ccc;
     border-radius: 8px;

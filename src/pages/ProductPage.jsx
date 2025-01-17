@@ -220,6 +220,7 @@ const ProductPage = () => {
    
     return (
         <div className="container">
+            <Link to="/"><button>Home</button></Link>
             <h1>Plant Products</h1>
             <Link to="/"><CartIcon /></Link>
             <Link to="/cart"><button>Cart</button></Link>

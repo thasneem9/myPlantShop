@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { incrementQuantity, decrementQuantity, removeItem } from '../CartSlice';
+import { incrementQuantity, decrementQuantity, removeItem,selectCartCount } from '../CartSlice';
 import { Link } from 'react-router-dom';
 import './cartPage.css'
 const CartPage = () => {
@@ -11,6 +11,7 @@ const CartPage = () => {
     const totalCheckoutPrice = cartItems.reduce((total, item) => 
         total + item.quantity * parseFloat(item.cost.slice(1)), 0
     );
+    const cartCount = useSelector(selectCartCount);
 
     return (
         <div className="cart-container">
@@ -34,6 +35,7 @@ const CartPage = () => {
                             <button onClick={() => dispatch(removeItem(item))}>Remove</button>
                         </div>
                     ))}
+                    <h3>Total Number of items:{cartCount}</h3>
                     <h3>Total: ${totalCheckoutPrice.toFixed(2)}</h3>
                 </div>
             )}
