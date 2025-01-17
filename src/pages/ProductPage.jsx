@@ -220,10 +220,17 @@ const ProductPage = () => {
    
     return (
         <div className="container">
-            <Link to="/"><button>Home</button></Link>
-            <h1>Plant Products</h1>
-            <Link to="/"><CartIcon /></Link>
-            <Link to="/cart"><button>Cart</button></Link>
+            <div className='navbar'>
+            <Link to="/"  style={{ textDecoration:"none"}}><h3 className='navbar-title'>Green Haven </h3></Link>
+            <Link to="/cart"><button className='navbar-button'> <Link to="/"><CartIcon /></Link>Cart</button></Link>
+            </div>
+<br>
+</br>
+<br></br>
+<br></br>
+            
+            <h2 style={{textAlign:"center", fontSize:"40px"}}>Plant Products</h2>
+          
             {plantsArray.map((categoryItem, index) => (
                 <div key={index} className="category-section">
                     <h2 className="category-title">{categoryItem.category}</h2>
@@ -249,7 +256,7 @@ const ProductPage = () => {
                     </div>
                 </div>
             ))}
-            <CartPage />
+            
         </div>
     );
 };

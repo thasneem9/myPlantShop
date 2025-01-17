@@ -12,12 +12,16 @@ const CartPage = () => {
         total + item.quantity * parseFloat(item.cost.slice(1)), 0
     );
     const cartCount = useSelector(selectCartCount);
-
+const handleCheckout=()=>{
+ 
+        alert("Check-Out functinality will be added later");
+  
+}
     return (
         <div className="cart-container">
             <h2>Cart</h2>
             <Link to="/plants"><button>Continue Shopping</button></Link>
-            <button onClick={""}>CheckOut</button>
+            <button onClick={handleCheckout}>CheckOut</button>
             {cartItems.length === 0 ? (
                 <p>Your cart is empty.</p>
             ) : (
