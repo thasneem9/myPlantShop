@@ -5,7 +5,9 @@ import { incrementQuantity, decrementQuantity, removeItem,selectCartCount } from
 import { Link } from 'react-router-dom';
 import './cartPage.css'
 import CartIcon from '../CartIcon.jsx'
+
 const CartPage = () => {
+  ;
     const dispatch = useDispatch();
     const cartItems = useSelector(state => state.cart.cartItems);
 
@@ -18,12 +20,18 @@ const handleCheckout=()=>{
         alert("Check-Out functinality will be added later");
   
 }
+
     return (
         <div className="cart-container">
 
              <div className='navbar'>
             <Link to="/"  style={{ textDecoration:"none"}}><h3 className='navbar-title'>Green Haven </h3></Link>
-            <Link to="/cart"><button className='navbar-button'> <Link to="/cart"><CartIcon /></Link>Cart</button></Link>
+            <Link to="/cart" style={{ textDecoration: 'none' }}>
+            <button className="navbar-button" >
+            <CartIcon />
+                Cart
+         </button>
+        </Link>
             </div>
 
             <h2>Cart</h2>

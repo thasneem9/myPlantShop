@@ -222,7 +222,7 @@ const ProductPage = () => {
         <div className="container">
             <div className='navbar'>
             <Link to="/"  style={{ textDecoration:"none"}}><h3 className='navbar-title'>Green Haven </h3></Link>
-            <Link to="/cart"><button className='navbar-button'> <Link to="/"><CartIcon /></Link>Cart</button></Link>
+            <Link to="/cart"><button className='navbar-button'> <Link to="/cart"><CartIcon /></Link>Cart</button></Link>
             </div>
 <br>
 </br>
